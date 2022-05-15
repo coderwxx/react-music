@@ -57,6 +57,9 @@ export const SongsCoverWrapper = styled.li`
     width: 140px;
     padding-top: 5px;
     padding-bottom: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     .title {
       color: #000;

@@ -1,9 +1,34 @@
-import React, { memo } from "react";
-
+import React, { memo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  changeCatAction,
+  getCategorySongAction,
+  getCategoryListAction,
+} from "./store/actionCreators";
+import { SongsWrapper } from "./style";
+import SongsHeader from "./cpages/songs-header";
+import SongsList from "./cpages/songs-list";
 export default memo(function XXSongs() {
+  // redux
+  const cat = useLocation().cat;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changeCatAction(cat));
+  }, [cat, dispatch]);
+
+  // other hooks
+  useEffect(() => {
+    dispatch(getCategoryListAction(1));
+    dispatch(getCategorySongAction());
+  }, [dispatch]);
+
   return (
-    <div>
-      <h2>Songs</h2>
+    <div className="wrap-v2">
+      <SongsWrapper>
+        <SongsHeader />
+        <SongsList />
+      </SongsWrapper>
     </div>
   );
 });

@@ -18,7 +18,11 @@
 */
 const regExp = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/;
 export function parseLyric(lyric) {
-  const lineStrings = lyric.split("\n");
+  let lineStrings = "";
+  if (lyric) {
+    lineStrings = lyric.split("\n");
+  }
+
   const lyrics = [];
   for (const line of lineStrings) {
     if (line) {

@@ -1,10 +1,14 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
 
+import storage from "../../../../../utils/local-storage";
 import { formatMinuteSecond } from "@/utils/format-data";
 import { PlayerListWrapper } from "./style";
-import { getCurrentSongAction } from "../../../store/actionCreators";
+import {
+  getCurrentSongAction,
+  changePlayListAction,
+} from "../../../store/actionCreators";
 
 const XXPlayerList = memo(() => {
   let content = "";
@@ -13,9 +17,15 @@ const XXPlayerList = memo(() => {
     playList: state.getIn(["player", "playList"]),
     currentSongIndex: state.getIn(["player", "currentSongIndex"]),
   }));
+  // other hooks
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const playListStorage = storage.getItem("playList");
+    dispatch(changePlayListAction(playListStorage));
+  }, [dispatch]);
 
   // other functions
-  const dispatch = useDispatch();
+
   const playMusic = (id) => {
     dispatch(getCurrentSongAction(id));
   };

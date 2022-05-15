@@ -2,8 +2,8 @@ import {
   getHotRecommend,
   getTopBanners,
   getTopList,
+  getNewAlbum,
 } from "@/service/recommend";
-import { getNewAlbum } from "../../../../../service/recommend";
 import * as ActionTypes from "./constants";
 
 const changeHotRecommendAction = (res) => ({

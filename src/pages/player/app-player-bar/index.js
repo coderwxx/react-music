@@ -23,7 +23,7 @@ export default memo(function XXAppPlayerBar() {
   const [progress, setProgress] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showPanel, setShowPanel] = useState(true);
+  const [showPanel, setShowPanel] = useState(false);
   // redux hook
   const dispatch = useDispatch();
   const { currentSong, sequence, lyricList, lyricIndex } = useSelector(
@@ -172,7 +172,7 @@ export default memo(function XXAppPlayerBar() {
           ></button>
         </div>
         <div className="image">
-          <img src={getImageUrl(picUrl, 35)} alt="" />
+          {picUrl ? <img src={getImageUrl(picUrl, 35)} alt="" /> : ""}
           <a href="/#" className="cover sprite_playbar">
             {""}
           </a>

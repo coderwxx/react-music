@@ -1,6 +1,7 @@
 import { getSongDetail, getLyric } from "../../../service/player";
 import * as actionTypes from "./constants";
 import { parseLyric } from "../../../utils/parseLyric";
+import storage from "../../../utils/local-storage";
 
 const changeCurrentSongAction = (currentSong) => ({
   type: actionTypes.CHANGE_CURRENT_SONG,
@@ -17,7 +18,7 @@ export const changeCurrentSongIndexAction = (index) => ({
   index,
 });
 
-const changePlayListAction = (playList) => ({
+export const changePlayListAction = (playList) => ({
   type: actionTypes.CHANGE_PLAYLIST,
   playList,
 });
@@ -100,12 +101,18 @@ export const getCurrentSongAction = (ids) => {
         const newPlayList = [...playList];
         newPlayList.push(song);
 
-        // 2.更新redux的值
+        // 2.将playList数据存储到localStorage中
+        if (newPlayList) {
+          storage.setItem("playList", newPlayList);
+        }
+        // const playListStorage = storage.getItem("playList");
+        // dispatch(changePlayListAction(playListStorage));
+        // 3.更新redux的值
         dispatch(changePlayListAction(newPlayList));
         dispatch(changeCurrentSongIndexAction(newPlayList.length - 1));
         dispatch(changeCurrentSongAction(song));
 
-        // 3.请求歌词数据
+        // 4.请求歌词数据
         dispatch(getLyricAction(ids));
       });
     }
@@ -115,7 +122,7 @@ export const getCurrentSongAction = (ids) => {
 export const getLyricAction = (id) => {
   return (dispatch) => {
     getLyric(id).then((res) => {
-      const lyric = res.lrc.lyric;
+      const lyric = (res && res.lrc && res.lrc.lyric) || "";
       const lyricList = parseLyric(lyric);
       dispatch(changeLyricListAciton(lyricList));
     });

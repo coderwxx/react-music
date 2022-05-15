@@ -6,7 +6,11 @@ export default memo(function XXAlbumCover(props) {
   const { size, info, width, bgp } = props;
   return (
     <AlbumCoverWrapper size={size} width={width} bgp={bgp}>
-      <img className="image" src={getImageUrl(info.picUrl, size)} alt="" />
+      <img
+        className="image"
+        src={getImageUrl(info.picUrl, size)}
+        alt={info.name}
+      />
       <a className="cover image_cover" href="todo">
         cover
       </a>

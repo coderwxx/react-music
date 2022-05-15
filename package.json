@@ -10,6 +10,7 @@
     "antd": "^4.2.4",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "events": "^3.3.0",
     "immutable": "^4.0.0-rc.12",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",

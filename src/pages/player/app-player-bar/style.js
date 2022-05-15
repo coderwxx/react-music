@@ -44,6 +44,8 @@ export const PlayerBarWrapper = styled.div`
     }
 
     .image {
+      width: 35px;
+      height: 35px;
       position: relative;
       margin: 0 10px 0 35px;
       img {

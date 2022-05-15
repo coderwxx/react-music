@@ -27,7 +27,7 @@ const XXLyricList = memo(() => {
           {lyricList.map((item, index) => {
             return (
               <li
-                key={item.time}
+                key={index}
                 className={classNames("list-item", {
                   active: lyricIndex === index,
                 })}
