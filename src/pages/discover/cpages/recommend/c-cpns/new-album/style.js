@@ -12,7 +12,6 @@ export const AlbumCarouselWrapper = styled.div`
     display: flex !important;
     height: 184px !important;
     align-items: center;
-    padding-left: 5px;
     justify-content: space-evenly;
   }
 

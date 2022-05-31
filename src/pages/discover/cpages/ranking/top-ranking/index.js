@@ -1,10 +1,9 @@
 import React, { memo, useEffect, useState } from "react";
 import classNames from "classnames";
 import { TopRankingPageWrapper } from "./style";
-import { getTopList, getRankingList } from "../../../../../service/ranking";
+import { getRankingList, getTopList } from "../../../../../service/ranking";
 import { getImageUrl } from "@/utils/format-data";
 import { eventBus } from "../../../../../utils/event-bus";
-
 
 const XXtopRanking = memo(() => {
   // props and state
@@ -14,12 +13,12 @@ const XXtopRanking = memo(() => {
   // other hooks
   useEffect(() => {
     const fetchData = async () => {
-      // 先获取topList数据
+      // // 先获取topList数据
       const topListResult = await getTopList();
-      // 获取到topList数据
+      // // 获取到topList数据
       const topList = topListResult.list;
       setTopList(topList);
-      const rankingListResult = await getRankingList(topList[0].id);
+      const rankingListResult = await getRankingList(19723756);
       const playList = rankingListResult.playlist;
 
       // 发出事件总线

@@ -10,6 +10,8 @@ import { SongsWrapper } from "./style";
 import SongsHeader from "./cpages/songs-header";
 import SongsList from "./cpages/songs-list";
 export default memo(function XXSongs() {
+  // props and state
+  const ref = React.createRef();
   // redux
   const cat = useLocation().cat;
   const dispatch = useDispatch();
@@ -26,8 +28,8 @@ export default memo(function XXSongs() {
   return (
     <div className="wrap-v2">
       <SongsWrapper>
-        <SongsHeader />
-        <SongsList />
+        <SongsHeader ref={ref} />
+        <SongsList songsHeaderRef={ref} />
       </SongsWrapper>
     </div>
   );

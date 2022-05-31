@@ -8,7 +8,10 @@ import {
 import SongsCover from "@/components/songs-cover";
 import PagePagination from "@/components/page-pagination";
 
-const XXSongsList = memo(() => {
+const XXSongsList = memo((props) => {
+  // props and state
+  const { songsHeaderRef } = props;
+
   // redux hooks
   const dispatch = useDispatch();
   const { categoryList, currentPage } = useSelector(
@@ -24,6 +27,7 @@ const XXSongsList = memo(() => {
 
   // other functions
   const handlePageChange = (page, pageSize) => {
+    window.scrollTo(songsHeaderRef.current.offsetTop, 0);
     dispatch(changeCurrentPageAction(page));
     dispatch(getCategoryListAction(page));
   };

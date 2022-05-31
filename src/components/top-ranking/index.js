@@ -8,7 +8,7 @@ import { TopRankingWrapper } from "./style";
 const XXTopRanking = memo(function XXTopRanking(props) {
   // props and state
   const { info } = props;
-  
+
   // rudux hooks
   const dispatch = useDispatch();
 

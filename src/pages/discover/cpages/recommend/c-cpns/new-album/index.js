@@ -32,17 +32,18 @@ export default memo(function XXNewAlbum() {
           {[0, 1].map((item) => {
             return (
               <div key={item} className="item">
-                {newAlbum.splice(item * 1, (item + 1) * 5).map((iten) => {
-                  return (
-                    <XXAlbumCover
-                      key={iten.picId}
-                      info={iten}
-                      size={100}
-                      width={118}
-                      bgp={-570 + "px"}
-                    ></XXAlbumCover>
-                  );
-                })}
+                {newAlbum &&
+                  newAlbum.slice(item * 5, (item + 1) * 5).map((iten) => {
+                    return (
+                      <XXAlbumCover
+                        key={iten.picId}
+                        info={iten}
+                        size={100}
+                        width={118}
+                        bgp={-570 + "px"}
+                      ></XXAlbumCover>
+                    );
+                  })}
               </div>
             );
           })}

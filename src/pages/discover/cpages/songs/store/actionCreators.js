@@ -34,7 +34,6 @@ export const getCategoryListAction = (page) => {
   return (dispatch, getState) => {
     // 1.获取currentCategory
     const currentCat = getState().getIn(["songs", "currentCat"]);
-    console.log(currentCat);
     getCategoryList((page - 1) * 35, currentCat).then((res) => {
       dispatch(changeCategoryList(res));
     });

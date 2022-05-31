@@ -20,21 +20,21 @@ export function getNewAlbum(limit) {
   });
 }
 
-export function getTopList(idx) {
-  return request({
-    url: "/top/list",
-    params: {
-      idx,
-    },
-  });
-}
-
 export function getArtistList(type, area) {
   return request({
     url: "/artist/list",
     params: {
       type,
       area,
+    },
+  });
+}
+
+export function getRankingList(id) {
+  return request({
+    url: "/playlist/detail",
+    params: {
+      id,
     },
   });
 }

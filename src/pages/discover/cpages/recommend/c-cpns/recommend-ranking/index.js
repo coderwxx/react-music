@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { getRankingAction } from "../../store/actionCreators";
+import { getRankingListAction } from "../../store/actionCreators";
 import { RankingWrapper } from "./style";
 import XXTopRanking from "@/components/top-ranking";
 import XXThemeHeaderRCM from "../../../../../../components/theme-header-rcm";
@@ -17,13 +17,13 @@ export default memo(function XXRecommendRanking() {
 
   // 发送网络请求，获取数据
   useEffect(() => {
-    dispatch(getRankingAction(0));
+    dispatch(getRankingListAction(19723756));
   }, [dispatch]);
   useEffect(() => {
-    dispatch(getRankingAction(2));
+    dispatch(getRankingListAction(2884035));
   }, [dispatch]);
   useEffect(() => {
-    dispatch(getRankingAction(3));
+    dispatch(getRankingListAction(3779629));
   }, [dispatch]);
 
   return (
